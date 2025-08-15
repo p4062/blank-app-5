@@ -1,14 +1,17 @@
 import streamlit as st
-from joblib import dump, load
+from joblib import load
 import numpy as np
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
-
+# Load the model
 model = load('linear_regression_model.joblib')
-user_input = int(input ("Enter house size:"))
+
+# Create a simple user input
+user_input = st.number_input('Enter house size:', min_value=100, max_value=10000, step=50)
+
+# Reshape the input for the model
 input_array = np.array([user_input]).reshape(-1, 1)
-predicted_price = model.predict(input_array)
-print(f"Predicted Value: {predicted_price[0]:.2f}")
+
+# Predict the house price
+if st.button('Predict Price'):
+    predicted_price = model.predict(input_array)
+    st.write(f"The predicted house price is: ${predicted_price[0]:.2f}")
