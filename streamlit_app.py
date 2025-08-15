@@ -1,5 +1,6 @@
 import streamlit as st
 from joblib import dump, load
+import numpy as np
 
 st.title("🎈 My new app")
 st.write(
