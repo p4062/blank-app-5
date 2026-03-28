@@ -6,7 +6,7 @@ import numpy as np
 model = load('linear_regression_model.joblib')
 
 # Create a simple user input
-user_input = st.number_input('Enter house size:', min_value=100, max_value=10000, step=50)
+user_input = st.number_input('Enter1 house size:', min_value=100, max_value=10000, step=50)
 
 # Reshape the input for the model
 input_array = np.array([user_input]).reshape(-1, 1)
